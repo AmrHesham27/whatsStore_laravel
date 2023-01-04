@@ -1,0 +1,35 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
+
+class StoresSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('stores')->insert([
+            'name' => 'كوك دوور',
+            'user_id' => 1, 
+            'url' => 'cook_door',
+            'logo' => 'woodmart-building-supplies-logo.svg',  
+            'color_1' => 'red',  
+            'color_2' => 'blue',  
+            'min_order' => '20', 
+            'start_time' => Carbon::parse('10:00'),
+            'end_time' =>  Carbon::parse('23:00'),
+            'delievry_time' => '15',
+            'delivery_fees' => '20',
+            'is_suspended' => false,
+            'whatsapp' => '01551694277'
+        ]);
+    }
+}
