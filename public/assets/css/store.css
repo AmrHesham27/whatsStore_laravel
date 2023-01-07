@@ -38,6 +38,11 @@ p {
   width: 100% !important;
 }
 
+.col-card {
+  min-width: 50%;
+  padding: 0 !important;
+}
+
 .page-container {
   width: 1000px;
   box-sizing: border-box;
@@ -134,7 +139,6 @@ p {
   border: 1px solid rgb(210, 210, 210);
 }
 .cart .header {
-  background-color: rgb(255, 90, 0);
   font-size: 20px;
   font-weight: 500;
   text-align: end;
@@ -215,7 +219,6 @@ p {
   outline: none;
   width: 20px;
   height: 20px;
-  color: rgb(255, 90, 0);
   background-color: white;
   font-size: 10px;
   display: inline-flex;
@@ -295,8 +298,10 @@ p {
   padding: 13px 0;
 }
 .menu-item img {
-  max-width: 60px;
+  width: 60px;
   max-height: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .menu-item .add-button {
   background-color: rgb(0, 148, 0);
@@ -345,6 +350,27 @@ p {
   color: black !important;
 }
 
+.card-product {
+  text-align: center;
+  min-width: 48%;
+  margin: 1%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.card-product img {
+  max-height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.card-product button {
+  color: white;
+  border: none;
+  outline: none;
+}
+.card-product button:hover, .card-product button:focus {
+  outline: none;
+  border: none;
+}
+
 .info {
   width: 660px;
   margin-left: 20px;
@@ -378,6 +404,7 @@ p {
   align-items: center;
   width: 100vw;
   cursor: pointer;
+  box-shadow: rgb(171, 169, 171) 0px 0px 5px 0px;
 }
 
 .modal-dialog {
@@ -472,5 +499,15 @@ p {
   }
   .navbar .nav-item:nth-child(2) {
     width: 55%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .card-product {
+    min-width: 100%;
+    margin: 0;
+    margin-bottom: 25px;
+  }
+  .card-product img {
+    max-height: 225px;
   }
 }/*# sourceMappingURL=store.css.map */

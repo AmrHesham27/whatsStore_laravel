@@ -18,23 +18,48 @@ class ProductsSeeder extends Seeder
         DB::table('products')->insert([
             [
                 'store_id' => 1,
-                'name' => 'كباب',
-                'desc' => 'سندوتش الكباب الجديد',
+                'name' => 'تي شيرت',
+                'desc' => 'اطلاله قويه',
                 'price' => 90,
-                'image' => 'item_1.webp',
+                'image' => 'product_1.jpg',
                 'category_id' => 1,
                 'discount' => 30,
-                'sizes' => json_encode( ['s' => 50, 'm' => 70, 'l' => 90] )
             ],
             [
                 'store_id' => 1,
-                'name' => 'شيش طاووق',
-                'desc' => 'سندوتش الشيش طاووق الرائع',
-                'price' => 80,
-                'image' => 'item_1.webp',
+                'name' => 'تي شيرت',
+                'desc' => 'اطلاله قويه',
+                'price' => 90,
+                'image' => 'product_2.jpg',
+                'category_id' => 1,
+                'discount' => 30,
+            ],
+            [
+                'store_id' => 1,
+                'name' => 'تي شيرت',
+                'desc' => 'اطلاله قويه',
+                'price' => 90,
+                'image' => 'product_3.webp',
+                'category_id' => 1,
+                'discount' => 30,
+            ],
+            [
+                'store_id' => 1,
+                'name' => 'تي شيرت',
+                'desc' => 'اطلاله قويه',
+                'price' => 90,
+                'image' => 'product_4.jpg',
+                'category_id' => 1,
+                'discount' => 30,
+            ],
+            [
+                'store_id' => 1,
+                'name' => 'تي شيرت',
+                'desc' => 'اطلاله قويه',
+                'price' => 90,
+                'image' => 'product_1.jpg',
                 'category_id' => 2,
                 'discount' => 30,
-                'sizes' => null
             ]
         ]);
     }

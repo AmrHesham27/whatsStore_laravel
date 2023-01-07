@@ -1,18 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-function responsiveCart() {
+function responsiveCart({color}) {
     const { total } = useSelector((state) => state.cart);
 
     return (
         <>
             {
-            total &&
+            total ?
             <div
                 className="responsive-cart"
                 data-toggle="modal"
                 data-target="#modal-cart"
-                style={{ backgroundColor: "rgb(255, 90, 0)" }}
+                style={{ backgroundColor: color }}
             >
                 <div className="d-flex">
                     <span className="d-flex flex-row-reverse mx-2">
@@ -22,7 +22,7 @@ function responsiveCart() {
                     <span>اطلب الان</span>
                 </div>
             </div>
-            }
+            : undefined}
         </>
     );
 }

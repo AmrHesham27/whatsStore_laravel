@@ -23,11 +23,8 @@ class StoresSeeder extends Seeder
             'logo' => 'woodmart-building-supplies-logo.svg',  
             'color_1' => 'red',  
             'color_2' => 'blue',  
-            'min_order' => '20', 
             'start_time' => Carbon::parse('10:00'),
             'end_time' =>  Carbon::parse('23:00'),
-            'delievry_time' => '15',
-            'delivery_fees' => '20',
             'is_suspended' => false,
             'whatsapp' => '01551694277'
         ]);

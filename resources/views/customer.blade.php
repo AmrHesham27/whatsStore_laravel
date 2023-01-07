@@ -24,12 +24,12 @@
         .my-nav .nav-item {
             border-bottom: 3px solid transparent !important;
         }
-        .my-nav .nav-item.active {
-            border-bottom: 3px solid rgb(255, 90, 0) !important;
-        }
     </style>
 </head>
 <body>
     <div id="root" data='{{ $store }}'></div>
+    <script>
+        let navItem = document.getElementById
+    </script>
 </body>
 </html>

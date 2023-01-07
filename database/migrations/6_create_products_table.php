@@ -26,9 +26,6 @@ return new class extends Migration
             $table->foreignId('category_id')->references('id')->on('products_categories')
                 ->onDelete('cascade')->onUpdate('cascade');
             $table->tinyInteger('discount');
-            $table->json('sizes')->nullable();
-
-
         });
     }
 

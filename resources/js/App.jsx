@@ -4,7 +4,6 @@ import { createRoot } from "react-dom/client";
 // components
 import PageHeader from "./components/pageHeader";
 import PageBody from "./components/pageBody";
-import SizeOptions from "./components/sizeOptions";
 import SendToWhatsapp from "./components/sendToWhatsapp";
 import ResponsiveCart from "./components/responsiveCart";
 import ModalCart from "./components/modalCart";
@@ -14,16 +13,16 @@ import { Provider } from "react-redux";
 import reduxStore from "./redux/store";
 
 export default function App({store}) {
+    console.log(store)
     return (
         <Provider store={reduxStore}>
             <PageHeader image={store["logo"]} />
             <div className="page-container">
                 <PageBody store={store} />
-                <SizeOptions />
-                <SendToWhatsapp whatsapp={store['whatsapp']} />
-                <ModalCart delivery_fees={store["delivery_fees"]} />
+                <SendToWhatsapp whatsapp={store['whatsapp']} color={store['color_1']} />
+                <ModalCart delivery_fees={store["delivery_fees"]} color={store['color_1']} />
             </div>
-            <ResponsiveCart delivery_fees={store["delivery_fees"]} />
+            <ResponsiveCart delivery_fees={store["delivery_fees"]} color={store['color_1']} />
         </Provider>
     );
 }

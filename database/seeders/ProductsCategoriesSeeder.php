@@ -17,11 +17,11 @@ class ProductsCategoriesSeeder extends Seeder
     {
         DB::table('products_categories')->insert([
             [
-                'name' => 'سندوتشات',
+                'name' => 'تي شيرتات',
                 'store_id' => 1
             ], 
             [
-                'name' => 'الأكثر مبيعا',
+                'name' => 'مجموعة الصيف',
                 'store_id' => 1
             ]
         ]);

@@ -1,11 +1,11 @@
 import React from "react";
-import Cart from './cart';
-import Info from './info';
-import Menu from './menu';
+import Cart from "./cart";
+import Info from "./info";
+import Menu from "./menu";
 import CategoriesList from "./categories";
 import { useState, useEffect } from "react";
 
-function pageBody({store}) {
+function pageBody({ store }) {
     const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
 
@@ -13,13 +13,16 @@ function pageBody({store}) {
         // fetch product data
         const getProducts = async () => {
             const response = await fetch(
-                `http://localhost:8000/api/getProducts/${store['id']}`
+                `http://localhost:8000/api/getProducts/${store["id"]}`
             );
             if (response.ok) {
                 const data = await response.json();
                 setCategories(data.data);
                 data["data"].forEach((category) => {
-                    setProducts((products) => [...products, ...category['products']]);
+                    setProducts((products) => [
+                        ...products,
+                        ...category["products"],
+                    ]);
                 });
             }
         };
@@ -41,7 +44,10 @@ function pageBody({store}) {
                     >
                         قائمة الطعام
                         <i
-                            style={{ color: 'rgb(255, 90, 0)', marginLeft: '5px' }}
+                            style={{
+                                color: store['color_1'],
+                                marginLeft: "5px",
+                            }}
                             className="fa fa-utensils menu-icon"
                             aria-hidden="true"
                         ></i>
@@ -58,7 +64,10 @@ function pageBody({store}) {
                     >
                         معلومات المطعم
                         <i
-                            style={{ color: 'rgb(255, 90, 0)', marginLeft: '5px' }}
+                            style={{
+                                color: store['color_1'],
+                                marginLeft: "5px",
+                            }}
                             className="fa fa-info-circle menu-icon"
                             aria-hidden="true"
                         ></i>
@@ -67,7 +76,11 @@ function pageBody({store}) {
             </nav>
 
             <div className="d-flex">
-                <Cart delivery_fees={store['delivery_fees']} />
+                <Cart
+                    delivery_fees={store["delivery_fees"]}
+                    currency={store["currency"]}
+                    color={store['color_1']}
+                />
                 <div className="tab-content" id="nav-tabContent">
                     <div
                         className="tab-pane fade"
@@ -86,7 +99,13 @@ function pageBody({store}) {
                         aria-labelledby="nav-home-tab"
                     >
                         <div className="body-container">
-                            <Menu products={products} categories={categories} />
+                            <Menu
+                                products={products}
+                                categories={categories}
+                                currency={store["currency"]}
+                                displayCards={store['displayCards']}
+                                color={store['color_1']}
+                            />
                             <CategoriesList categories={categories} />
                         </div>
                     </div>

@@ -1,24 +1,28 @@
 import React, { useEffect, useState } from "react";
 import CollapseCategory from "./collapseCategory";
 import MenuItem from "./menuItem";
+import CardProduct from "./CardProduct";
 
-function menu({ products, categories }) {
+function menu({ products, categories, currency, displayCards, color }) {
     const [searchItems, setSearchItems] = useState([]);
+    const [showSearch, setShowSearch] = useState(false);
     const [userInput, setUserInput] = useState("");
 
     const search = () => {
         setSearchItems([]);
-        console.log(products);
+        setShowSearch(true);
         products.filter((product) => {
             if (product["name"].indexOf(userInput) > -1) {
                 setSearchItems((state) => [...state, product]);
-            }
+            } else setSearchItems([]);
         });
     };
 
     useEffect(() => {
-        if (userInput === "") setSearchItems([]);
-        else search();
+        if (userInput === "") {
+            setSearchItems([]);
+            setShowSearch(false);
+        } else search();
     }, [userInput]);
 
     return (
@@ -40,13 +44,37 @@ function menu({ products, categories }) {
                     ></i>
                 </div>
             </div>
-            {searchItems.length
+            {searchItems.length && showSearch && displayCards
                 ? searchItems.map((product, index) => (
-                      <MenuItem key={index} product={product} />
+                      <CardProduct
+                          key={index}
+                          product={product}
+                          currency={currency}
+                          color={color}
+                      />
                   ))
-                : categories.length
+                : undefined}
+            {searchItems.length && showSearch && !displayCards
+                ? searchItems.map((product, index) => (
+                      <MenuItem
+                          key={index}
+                          product={product}
+                          currency={currency}
+                      />
+                  ))
+                : undefined}
+            {!searchItems.length && showSearch ? (
+                <p>لا يوجد عناصر تطابق بحثك</p>
+            ) : undefined}
+            {!showSearch
                 ? categories.map((category, index) => (
-                      <CollapseCategory key={index} category={category} />
+                      <CollapseCategory
+                          key={index}
+                          category={category}
+                          currency={currency}
+                          displayCards={displayCards}
+                          color={color}
+                      />
                   ))
                 : undefined}
         </div>
@@ -54,3 +82,23 @@ function menu({ products, categories }) {
 }
 
 export default menu;
+
+/**.map((product, index) => (
+     <MenuItem
+        key={index}
+        product={product}
+        currency={currency}
+    />
+
+/**
+ * 
+ * categories.map((category, index) => (
+        <CollapseCategory
+            key={index}
+            category={category}
+            currency={currency}
+            displayCards={displayCards}
+            color={color}
+        />
+    ))
+ */
