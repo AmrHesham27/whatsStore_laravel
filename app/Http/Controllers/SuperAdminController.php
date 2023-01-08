@@ -3,16 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Store;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Store;
+use Illuminate\Validation\Rules;
 
-class SuperAdmin extends Controller
+class SuperAdminController extends Controller
 {
     public function showRegisterStore()
     {
         return view();
+    }
+
+    public function isSuperAdmin(Request $request)
+    {
+        //dd(env('SUPER_ADMIN_EMAIL'));
+        //dd(Auth::user()->email);
+        if (env('SUPER_ADMIN_EMAIL') === Auth::user()->email) return true;
+        else return false;
     }
 
     public function registerStoreOwner(Request $request)

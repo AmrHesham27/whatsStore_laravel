@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\SuperAdmin;
+use App\Http\Controllers\SuperAdminController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+require __DIR__.'/auth.php';
+
 Route::get('/stores/{id}', [StoreController::class, 'show']);
 
-require __DIR__.'/auth.php';
+
+Route::get('/superAdmin', [SuperAdminController::class, 'isSuperAdmin']);
